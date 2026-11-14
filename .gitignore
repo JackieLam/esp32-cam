@@ -1,0 +1,7 @@
+# WiFi 等敏感配置
+secrets.h
+# 编译产物
+build/
+*.bin
+*.elf
+.DS_Store
