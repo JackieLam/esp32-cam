@@ -6,6 +6,7 @@
 |---|---|
 | `01_blink/` | 板载 LED (GPIO3) 闪烁 + 串口打印，验证环境 |
 | `02_camera_stream/` | 摄像头 MJPEG 实时画面网页，`/` 看视频，`/capture` 拍照 |
+| `03_dog_detect/` | 实时画面 + 识别有没有狗（浏览器端 TensorFlow.js COCO-SSD，需联网、建议 Chrome） |
 
 ## 环境
 
@@ -26,7 +27,7 @@ FQBN="esp32:esp32:esp32s3:CDCOnBoot=cdc,PSRAM=opi,FlashSize=16M,PartitionScheme=
 PORT=$(ls /dev/cu.usbmodem* | head -1)
 
 # 摄像头 demo 首次需要配置 WiFi（仅 2.4GHz）
-cp 02_camera_stream/secrets.h.example 02_camera_stream/secrets.h   # 然后编辑
+cp 02_camera_stream/secrets.h.example 02_camera_stream/secrets.h   # 然后编辑（03_dog_detect 同理）
 
 arduino-cli compile -u -p "$PORT" -b "$FQBN" 02_camera_stream
 arduino-cli monitor -p "$PORT" -c baudrate=115200   # 按 RST 看 IP
